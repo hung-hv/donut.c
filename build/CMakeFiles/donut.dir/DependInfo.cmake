@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/HAU5HC/Desktop/practice/donut/donut.c/src/cursor.c" "CMakeFiles/donut.dir/src/cursor.c.obj" "gcc" "CMakeFiles/donut.dir/src/cursor.c.obj.d"
-  "C:/Users/HAU5HC/Desktop/practice/donut/donut.c/src/fps.c" "CMakeFiles/donut.dir/src/fps.c.obj" "gcc" "CMakeFiles/donut.dir/src/fps.c.obj.d"
-  "C:/Users/HAU5HC/Desktop/practice/donut/donut.c/src/main.c" "CMakeFiles/donut.dir/src/main.c.obj" "gcc" "CMakeFiles/donut.dir/src/main.c.obj.d"
+  "C:/Users/vieth/Documents/dummy_prj/donut/src/cursor.c" "CMakeFiles/donut.dir/src/cursor.c.obj" "gcc" "CMakeFiles/donut.dir/src/cursor.c.obj.d"
+  "C:/Users/vieth/Documents/dummy_prj/donut/src/fps.c" "CMakeFiles/donut.dir/src/fps.c.obj" "gcc" "CMakeFiles/donut.dir/src/fps.c.obj.d"
+  "C:/Users/vieth/Documents/dummy_prj/donut/src/main.c" "CMakeFiles/donut.dir/src/main.c.obj" "gcc" "CMakeFiles/donut.dir/src/main.c.obj.d"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

@@ -1,6 +1,19 @@
 #include "fps.h"
 
 uint8_t pixel[X_SIZE][Y_SIZE] = {0};
+obj_t* torus;
+
+uint16_t x_cor[50] = {0};
+uint16_t y_cor[50] = {0};
+const float PI = 3.14;
+
+void init_object() {
+    const uint32_t obj_size = 100;
+    torus = (obj_t*)malloc(sizeof(obj_t));
+    /*init obj_size */
+    torus->point = (point_t*)malloc(sizeof(point_t)*obj_size);
+    torus->num_point = obj_size;
+}
 
 uint8_t random(uint8_t lower, uint8_t upper) {
     uint8_t num = (uint8_t)((rand() % (upper - lower + 1)) + lower);
@@ -14,6 +27,7 @@ void random_pixel() {
         }
     }
 }
+
 
 void render_screen() {
     int cur_time = 0;
@@ -34,11 +48,12 @@ void render_screen() {
 
 
 void render_2d_array() {
-    char* render_buff = (char*)malloc(sizeof(char)*((X_SIZE*Y_SIZE) + Y_SIZE));
+    char* render_buff = (char*)malloc(sizeof(char)*((X_SIZE*Y_SIZE)));
     uint64_t index = 0;
-    random_pixel();
+    // random_pixel();
+    calc_pixel();
     for(int y = 0; y < Y_SIZE; y++) {
-        for(int x = 0; x < X_SIZE; x++) {
+        for(int x = 0; x < (X_SIZE-1); x++) {
             if (pixel[x][y] == 1) {
                 render_buff[index] = '1';
             } 
@@ -55,5 +70,22 @@ void render_2d_array() {
     clear();
     printf("%s", render_buff);
 
+}
+
+void calc_cordinate_as_torus() {
+    const uint8_t radius = 7;
+    const float number_step = 50;
+    const float rad_step = (2*PI)/50;
+    for(int i = 0; i < number_step; i++) {
+        x_cor[i] =(X_SIZE/2) + sin(rad_step*i)*radius;
+        y_cor[i] =(Y_SIZE/2) + cos(rad_step*i)*radius;
+    }
+}
+
+void calc_pixel() {
+    calc_cordinate_as_torus();
+    for(int i = 0; i < 50; i++) {
+        pixel[x_cor[i]][y_cor[i]] = 1;
+    }
 }
 
