@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "fps.h": "c",
+        "cursor.h": "c",
+        "stdint.h": "c",
+        "stdlib.h": "c",
+        "compare": "c",
+        "torus.h": "c"
+    }
+}
