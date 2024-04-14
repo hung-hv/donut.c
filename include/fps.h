@@ -8,11 +8,16 @@
 #include <time.h>
 #include <math.h>
 #include "cursor.h"
+typedef struct Vector_t Vector_t;
+#include "torus.h"
+#include "common.h"
 
 #define X_SIZE 60
 #define Y_SIZE 20
 
-extern const float PI;
+// extern const float PI;
+
+// typedef struct Vector_t Vector_t;
 
 
 // extern uint8_t pixel[X_SIZE][Y_SIZE];
@@ -35,10 +40,14 @@ void random_pixel();
 
 void render_2d_array();
 
+void clearScreenBuffer();
+
+void clearPixels();
+
 void render_screen();
 
-void calc_cordinate_as_torus();
+// void calc_pixel();
 
-void calc_pixel();
+void transferCord2Pixels(Vector_t *p_vector, int max_size);
 
 #endif

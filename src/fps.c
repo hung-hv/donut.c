@@ -1,11 +1,13 @@
 #include "fps.h"
+#include "torus.h"
 
 uint8_t pixel[X_SIZE][Y_SIZE] = {0};
+char render_buff[X_SIZE*Y_SIZE] = {0};
 obj_t* torus;
 
 uint16_t x_cor[50] = {0};
 uint16_t y_cor[50] = {0};
-const float PI = 3.14;
+// const float PI = 3.14;
 
 void init_object() {
     const uint32_t obj_size = 100;
@@ -32,13 +34,20 @@ void random_pixel() {
 void render_screen() {
     int cur_time = 0;
     int post_time = 0;
-    const int delay = 200; //ms
+    const int delay = 500; //ms
+    uint8_t breakCondition = 0;
     
-    while (1) {
+    while (breakCondition == 0) {
+        if (cur_time == 0) {
+            cur_time = clock() * 1000 / CLOCKS_PER_SEC;
+            post_time = cur_time;
+        }
         if ((cur_time - post_time) >= delay) {
             // clear();
+            // clearScreenBuffer();
             render_2d_array();
-            post_time = cur_time;
+            // post_time = cur_time;
+            breakCondition=1;
         }
         cur_time = clock() * 1000 / CLOCKS_PER_SEC;
         // post_time = clock() * 1000 / CLOCKS_PER_SEC;
@@ -48,10 +57,20 @@ void render_screen() {
 
 
 void render_2d_array() {
-    char* render_buff = (char*)malloc(sizeof(char)*((X_SIZE*Y_SIZE)));
+    // char* render_buff = (char*)malloc(sizeof(char)*((X_SIZE*Y_SIZE)));
     uint64_t index = 0;
     // random_pixel();
-    calc_pixel();
+    // calc_pixel();
+    /* Clear buffer array */ 
+    // for(int y = 0; y < Y_SIZE; y++) {
+    //     for(int x = 0; x < (X_SIZE-1); x++) {
+    //         render_buff[index] = '0';
+    //         index++;
+    //     }
+    //     render_buff[index] = '\n';
+    //     index++;
+    // }
+    /* Calculate Array */
     for(int y = 0; y < Y_SIZE; y++) {
         for(int x = 0; x < (X_SIZE-1); x++) {
             if (pixel[x][y] == 1) {
@@ -69,23 +88,41 @@ void render_2d_array() {
     }
     clear();
     printf("%s", render_buff);
-
+    clearPixels();
 }
 
-void calc_cordinate_as_torus() {
-    const uint8_t radius = 7;
-    const float number_step = 50;
-    const float rad_step = (2*PI)/50;
-    for(int i = 0; i < number_step; i++) {
-        x_cor[i] =(X_SIZE/2) + sin(rad_step*i)*radius;
-        y_cor[i] =(Y_SIZE/2) + cos(rad_step*i)*radius;
+void clearScreenBuffer() {
+    uint64_t index = 0;
+    for(int y = 0; y < Y_SIZE; y++) {
+        for(int x = 0; x < (X_SIZE-1); x++) {
+            render_buff[index] = '0';
+            index++;
+        }
+        render_buff[index] = '\n';
+        index++;
+    }
+    clear();
+    printf("%s", render_buff);
+}
+
+void clearPixels() {
+    for(int y = 0; y < Y_SIZE; y++) {
+        for(int x = 0; x < (X_SIZE-1); x++) {
+            pixel[x][y] = 0;
+        }
     }
 }
 
-void calc_pixel() {
-    calc_cordinate_as_torus();
-    for(int i = 0; i < 50; i++) {
-        pixel[x_cor[i]][y_cor[i]] = 1;
-    }
+// void calc_pixel(Vector_t *p_vector) {
+//     calc_cordinate_as_torus();
+//     for(int i = 0; i < 50; i++) {
+//         pixel[x_cor[i]][y_cor[i]] = 1;
+//     }
+// }
+
+void transferCord2Pixels(Vector_t *p_vector, int max_size) {
+    for(int i = 0; i < max_size; i++) {
+        pixel[(int)(p_vector[i].x_cord)][(int)(p_vector[i].y_cord)] = 1;
+    }   
 }
 
