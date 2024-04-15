@@ -18,13 +18,13 @@ int main () {
     center1.x_cord = n++;
     center1.y_cord = n++;
     Circle_CordinateCalc(&circle1, 4, center1);
-    printf("size: %d\n", circle1.pointsSize);
+    printf("size: %d\n", circle1.numberOfVector);
     while(1) {
         // render_2d_array();
         center1.x_cord = n++;
         center1.y_cord = n++;
         Circle_CordinateCalc(&circle1, 4, center1);
-        transferCord2Pixels(circle1.vector, circle1.pointsSize );
+        transferCord2Pixels(circle1.vector, circle1.numberOfVector );
         render_screen();
     }
     

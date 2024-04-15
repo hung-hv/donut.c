@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "fps.h": "c",
-        "cursor.h": "c"
+        "cursor.h": "c",
+        "cmath": "c"
     }
 }
