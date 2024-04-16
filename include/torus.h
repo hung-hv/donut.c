@@ -32,11 +32,11 @@ typedef struct {
     float y_cord;
 }ScreenCord_t;
 
-typedef struct {
+struct Vector3D_t{
     float x_cord;
     float y_cord;
     float z_cord;
-}Vector3D_t;
+};
 
 typedef struct {
     float x_cord;
@@ -66,9 +66,13 @@ typedef struct {
 
 void initCircle (Circle_t *circle, int size);
 
-void dummyData (Circle_t *circle);
+// void dummyData (Circle_t *circle);
 
-void printData (Circle_t *circle);
+// void printData (Circle_t *circle);
 
-void Circle_CordinateCalc(Circle_t *circle, float radius, Vector_t center);
+void Circle_CordinateCalc(Circle_t *circle);
+
+void Torus_CordinateCalc(Torus_t *torus, Circle_t *circle, int numberOfCircle);
+
+ScreenCord_t * convert_xyz_2_xy(Vector3D_t *vector3D, int total_vectors, float fieldOfView, float z_distance);
 #endif

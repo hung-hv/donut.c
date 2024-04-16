@@ -15,32 +15,32 @@ void initCircle (Circle_t *circle, int size) {
     printf("Init done!\n");
 }
 
-void dummyData (Circle_t *circle) {
-    for (int i = 0; i < circle->numberOfVector ; i++) {
-        circle->vector[i].x_cord = (float)i;
-        circle->vector[i].y_cord = (float)i;
-    }
-    printf("Dummy done!\n");
-}
+// void dummyData (Circle_t *circle) {
+//     for (int i = 0; i < circle->numberOfVector ; i++) {
+//         circle->vector[i].x_cord = (float)i;
+//         circle->vector[i].y_cord = (float)i;
+//     }
+//     printf("Dummy done!\n");
+// }
 
-void printData (Circle_t *circle) {
-    for (int i = 0; i < circle->numberOfVector ; i++) {
-        printf("\nx_cord:");
-        printf("\n%f", circle->vector[i].x_cord);
-        printf("\ny_cord:");
-        printf("\n%f", circle->vector[i].y_cord);
-    }
-    printf("Print done!\n");
-}
+// void printData (Circle_t *circle) {
+//     for (int i = 0; i < circle->numberOfVector ; i++) {
+//         printf("\nx_cord:");
+//         printf("\n%f", circle->vector[i].x_cord);
+//         printf("\ny_cord:");
+//         printf("\n%f", circle->vector[i].y_cord);
+//     }
+//     printf("Print done!\n");
+// }
 
-void Circle_CordinateCalc(Circle_t *circle, Vector3D_t centerPoint) {
+void Circle_CordinateCalc(Circle_t *circle) {
     // const float radius = 7;
     // const uint16_t circle_split = 60; /* split circle into x parts */
     int circle_factor = circle->numberOfVector;  /* split circle into x parts */
     const float theta_step = (2*PI)/((float)circle_factor); /* a circle = 2*PI */
     for(int i = 0; i < circle_factor; i++) {
-        circle->vector3D[i].x_cord =(centerPoint.x_cord) + cos(theta_step*i)*(circle->circleRadius);
-        circle->vector3D[i].y_cord =(centerPoint.y_cord) + sin(theta_step*i)*(circle->circleRadius);
+        circle->vector3D[i].x_cord =(circle->centerPoint.x_cord) + cos(theta_step*i)*(circle->circleRadius);
+        circle->vector3D[i].y_cord =(circle->centerPoint.y_cord) + sin(theta_step*i)*(circle->circleRadius);
     }
 }
 
@@ -74,12 +74,24 @@ void Torus_CordinateCalc(Torus_t *torus, Circle_t *circle, int numberOfCircle) {
         float torus_angle = delta_torus *i;
         torus->circle->vector3D = (Vector3D_t*)malloc(numberOfVector*sizeof(Vector3D_t));
         for (int j = 0; i < numberOfVector; j ++) {
-            float circle_angle = delta_circle *j;
-            torus->circle->vector3D->x_cord = 
+            // float circle_angle = delta_circle *j;
+            float sub_expression = torus->torusRadius + circle->vector3D[j].x_cord;
+            torus->circle[i].vector3D[j].x_cord = (sub_expression) * cos(torus_angle);
+            torus->circle[i].vector3D[j].y_cord = circle->vector3D[j].y_cord;
+            torus->circle[i].vector3D[j].z_cord = -(sub_expression) * sin(torus_angle);
         }
-        circle->vector[i].x_cord =(center.x_cord) + cos(theta_step*i)*radius;
-        circle->vector[i].y_cord =(center.y_cord) + sin(theta_step*i)*radius;
     }
+}
+
+/* Export [x,y] in screen cordinate */
+ScreenCord_t * convert_xyz_2_xy(Vector3D_t *vector3D, int total_vectors, float fieldOfView, float z_distance) {
+    ScreenCord_t *output_cord = (ScreenCord_t*)malloc(total_vectors * sizeof(ScreenCord_t));
+
+    for (int i =0; i < total_vectors; i++) {
+        output_cord[i].x_cord = (int)( (vector3D[i].x_cord * fieldOfView) / (z_distance - vector3D[i].z_cord) );
+        output_cord[i].y_cord = (int)( (vector3D[i].y_cord * fieldOfView) / (z_distance - vector3D[i].z_cord) );
+    }   
+    return output_cord;
 }
 
 // void centerDummy (Vector_t *center) {

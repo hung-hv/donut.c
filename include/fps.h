@@ -9,6 +9,7 @@
 #include <math.h>
 #include "cursor.h"
 typedef struct Vector_t Vector_t;
+typedef struct Vector3D_t Vector3D_t;
 #include "torus.h"
 #include "common.h"
 
@@ -48,6 +49,6 @@ void render_screen();
 
 // void calc_pixel();
 
-void transferCord2Pixels(Vector_t *p_vector, int max_size);
+void transferCord2Pixels(Vector3D_t *p_vector3D, int max_size);
 
 #endif
