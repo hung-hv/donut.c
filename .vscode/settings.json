@@ -2,6 +2,7 @@
     "files.associations": {
         "fps.h": "c",
         "cursor.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "torus.h": "c"
     }
 }

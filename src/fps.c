@@ -126,3 +126,28 @@ void transferCord2Pixels(Vector3D_t *p_vector3D, int max_size) {
     }   
 }
 
+void convert_bufer2D_2_Pixels(struct Buffer2D_t *buffer2D, int max_size) {
+    int ox_center = (int)(X_SIZE/2);
+    int oy_center = (int)(Y_SIZE/2);
+    int x_cord = 0;
+    int y_cord = 0;
+    
+    for(int i = 0; i < max_size; i++) {
+        if ( buffer2D[i].x_cord >= 0 ) {
+            x_cord = buffer2D[i].x_cord + ox_center;
+        } else {
+            /* input buffer x is negative! */
+            x_cord = buffer2D[i].x_cord + ox_center;
+        }
+
+        if ( buffer2D[i].y_cord >= 0 ) {
+            y_cord = buffer2D[i].y_cord + oy_center;
+        } else {
+            /* input buffer y is negative! */
+            y_cord = buffer2D[i].y_cord + oy_center;
+        }
+        
+        pixel[x_cord][y_cord] = 1;
+    }   
+}
+

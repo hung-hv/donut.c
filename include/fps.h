@@ -10,11 +10,13 @@
 #include "cursor.h"
 typedef struct Vector_t Vector_t;
 typedef struct Vector3D_t Vector3D_t;
+typedef struct Buffer2D_t Buffer2D_t;
 #include "torus.h"
 #include "common.h"
 
 #define X_SIZE 60
 #define Y_SIZE 20
+// #define 
 
 // extern const float PI;
 
@@ -50,5 +52,7 @@ void render_screen();
 // void calc_pixel();
 
 void transferCord2Pixels(Vector3D_t *p_vector3D, int max_size);
+
+void convert_bufer2D_2_Pixels(Buffer2D_t *buffer2D, int max_size);
 
 #endif

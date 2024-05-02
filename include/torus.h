@@ -27,10 +27,10 @@ struct Vector_t{
     float y_cord;
 };
 
-typedef struct {
-    float x_cord;
-    float y_cord;
-}ScreenCord_t;
+struct Buffer2D_t{
+    int x_cord;
+    int y_cord;
+};
 
 struct Vector3D_t{
     float x_cord;
@@ -58,7 +58,7 @@ typedef struct {
 } Circle_t;
 
 typedef struct {
-    Vector3D_t *vector3D;
+    // Vector3D_t *vector3D;
     Circle_t *circle;
     int numberOfCircle;     /* number of step to spining circle around axis to a torus*/
     int torusRadius; /* Torus of Circle*/
@@ -72,7 +72,11 @@ void initCircle (Circle_t *circle, int size);
 
 void Circle_CordinateCalc(Circle_t *circle);
 
-void Torus_CordinateCalc(Torus_t *torus, Circle_t *circle, int numberOfCircle);
+void initTorus(Torus_t *torus, int numberOfCircle);
 
-ScreenCord_t * convert_xyz_2_xy(Vector3D_t *vector3D, int total_vectors, float fieldOfView, float z_distance);
+void Torus_CordinateCalc(Torus_t *torus, Circle_t *circle);
+
+struct Buffer2D_t * convert_xyz_2_xy(Vector3D_t *vector3D, int total_vectors, float fieldOfView, float z_distance);
+
+void shifting(Circle_t *circle, float x_shift, float y_shift, float z_shift);
 #endif
