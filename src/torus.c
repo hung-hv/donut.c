@@ -93,7 +93,7 @@ void Torus_CordinateCalc(Torus_t *torus, Circle_t *circle) {
             // printf("\n x = %f, ", torus->circle[i].vector3D[j].x_cord);
             torus->circle[i].vector3D[j].y_cord = circle->vector3D[j].y_cord;
             // printf("y = %f, ", torus->circle[i].vector3D[j].y_cord);
-            torus->circle[i].vector3D[j].z_cord = -(sub_expression) * sin(torus_angle);
+            torus->circle[i].vector3D[j].z_cord = -(sub_expression) * sin(torus_angle); //check this!
             // printf("z = %f", torus->circle[i].vector3D[j].z_cord);
         }
     }
