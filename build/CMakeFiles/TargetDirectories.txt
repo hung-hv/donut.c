@@ -1,3 +1,0 @@
-C:/Users/HAU5HC/Documents/stm32/git_repo/donut/donut.c/build/CMakeFiles/donut.dir
-C:/Users/HAU5HC/Documents/stm32/git_repo/donut/donut.c/build/CMakeFiles/edit_cache.dir
-C:/Users/HAU5HC/Documents/stm32/git_repo/donut/donut.c/build/CMakeFiles/rebuild_cache.dir
