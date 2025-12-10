@@ -8,7 +8,7 @@
 #include <time.h>
 #include <math.h>
 #include "cursor.h"
-typedef struct Vector_t Vector_t;
+typedef struct Vector_2D_t Vector_2D_t;
 #include "torus.h"
 #include "common.h"
 
@@ -17,7 +17,7 @@ typedef struct Vector_t Vector_t;
 
 // extern const float PI;
 
-// typedef struct Vector_t Vector_t;
+// typedef struct Vector_2D_t Vector_2D_t;
 
 
 // extern uint8_t pixel[X_SIZE][Y_SIZE];
@@ -48,6 +48,6 @@ void render_screen();
 
 // void calc_pixel();
 
-void transferCord2Pixels(Vector_t *p_vector, int max_size);
+void transferCord2Pixels(Vector_2D_t *p_vector, int max_size);
 
 #endif

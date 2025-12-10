@@ -2,7 +2,7 @@
 
 
 // const float PI = 3.14;
-// Vector_t vector1;
+// Vector_2D_t vector1;
 
 void initCircle (Circle_t *circle, int size) {
     // circle = (Circle_t*)malloc(size*sizeof(Circle_t));
@@ -10,7 +10,7 @@ void initCircle (Circle_t *circle, int size) {
     printf("size: %d\n", circle->pointsSize);
     // int init_size = circle->rad_step;
     // for (int i = 0; i < init_size; i++) {
-        circle->vector= (Vector_t*)malloc(size*sizeof(Vector_t));
+        circle->vector= (Vector_2D_t*)malloc(size*sizeof(Vector_2D_t));
     // }
     printf("Init done!\n");
 }
@@ -33,7 +33,7 @@ void printData (Circle_t *circle) {
     printf("Print done!\n");
 }
 
-void Circle_CordinateCalc(Circle_t *circle, float radius, Vector_t center) {
+void Circle_CordinateCalc(Circle_t *circle, float radius, Vector_2D_t center) {
     // const float radius = 7;
     // const uint16_t circle_split = 60; /* split circle into x parts */
     int circle_split = circle->pointsSize;  /* split circle into x parts */
@@ -44,6 +44,13 @@ void Circle_CordinateCalc(Circle_t *circle, float radius, Vector_t center) {
     }
 }
 
-// void centerDummy (Vector_t *center) {
+// TorusPoint_t calculate_torus_point(float theta, float phi, float R1, float R2) {
+//     TorusPoint_t point;
+    
+//     point.x = 
+// }
+
+
+// void centerDummy (Vector_2D_t *center) {
 
 // }

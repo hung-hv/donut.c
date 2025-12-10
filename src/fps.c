@@ -113,14 +113,14 @@ void clearPixels() {
     }
 }
 
-// void calc_pixel(Vector_t *p_vector) {
+// void calc_pixel(Vector_2D_t *p_vector) {
 //     calc_cordinate_as_torus();
 //     for(int i = 0; i < 50; i++) {
 //         pixel[x_cor[i]][y_cor[i]] = 1;
 //     }
 // }
 
-void transferCord2Pixels(Vector_t *p_vector, int max_size) {
+void transferCord2Pixels(Vector_2D_t *p_vector, int max_size) {
     for(int i = 0; i < max_size; i++) {
         pixel[(int)(p_vector[i].x_cord)][(int)(p_vector[i].y_cord)] = 1;
     }   
